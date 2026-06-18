@@ -29,12 +29,12 @@ public sealed class ChatController : ControllerBase {
 
         try {
             var reply = await _chatService.ChatAsync(request.Message, cancellationToken);
+
+            return Ok(new ChatResponse {
+                Reply = reply
+            });
         } finally {
             _semaphore.Release();
         }
-
-        return Ok(new ChatResponse {
-            Reply = reply
-        });
     }
 }
