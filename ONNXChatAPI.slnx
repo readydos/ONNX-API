@@ -1,3 +1,3 @@
 <Solution>
-  <Project Path="OnnxApi/OnnxApi.csproj" DisplayName="ONNXAPI" />
+  <Project Path="ONNXAPI/ONNXAPI.csproj" DisplayName="ONNXAPI" />
 </Solution>
