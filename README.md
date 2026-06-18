@@ -1,4 +1,4 @@
-# OnnxChatApi
+# ONNX Chat API
 
 ASP.NET Core Web API that hosts an ONNX GenAI model and exposes a public chat endpoint with Swagger.
 
