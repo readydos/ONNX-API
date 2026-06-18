@@ -14,6 +14,8 @@ public sealed class ChatController : ControllerBase {
         _chatService = chatService;
     }
 
+    private readonly SemaphoreSlim _semaphore = new(1, 1);
+
     [HttpPost]
     [ApiKey]
     [ProducesResponseType(typeof(ChatResponse), StatusCodes.Status200OK)]
@@ -21,7 +23,13 @@ public sealed class ChatController : ControllerBase {
     public async Task<ActionResult<ChatResponse>> Chat(
         [FromBody] ChatRequest request,
         CancellationToken cancellationToken) {
-        var reply = await _chatService.ChatAsync(request.Message, cancellationToken);
+        await _semaphore.WaitAsync();
+
+        try {
+            var reply = await _chatService.ChatAsync(request.Message, cancellationToken);
+        } finally {
+            _semaphore.Release();
+        }
 
         return Ok(new ChatResponse {
             Reply = reply

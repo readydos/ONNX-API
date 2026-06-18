@@ -18,6 +18,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c => {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "OnnxChatApi", Version = "v1" });
 
+    //deepseek-r1-distill-qwen-14b
     c.AddSecurityDefinition("ApiKey", new OpenApiSecurityScheme {
         Type = SecuritySchemeType.ApiKey,
         Name = "X-API-Key",
