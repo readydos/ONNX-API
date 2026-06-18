@@ -5,3 +5,5 @@
 /.vs
 /OnnxApi/obj
 *.user
+/ChatAPI/obj
+/ChatAPI/bin/Debug/net10.0
