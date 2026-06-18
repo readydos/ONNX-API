@@ -23,6 +23,8 @@ public sealed class ChatController : ControllerBase {
     public async Task<ActionResult<ChatResponse>> Chat(
         [FromBody] ChatRequest request,
         CancellationToken cancellationToken) {
+
+        // TODO remove for production (development mode only)
         await _semaphore.WaitAsync();
 
         try {
